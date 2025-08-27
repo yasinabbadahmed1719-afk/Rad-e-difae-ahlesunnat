@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Difa E Ahle Sunnat - Islamic Knowledge Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c5530;
+            --secondary-color: #c9a961;
+            --accent-color: #8b4513;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --bg-light: #f8f9fa;
+            --bg-dark: #1a1a1a;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.2em;
+            direction: rtl;
+            text-align: right;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-top {
+            background: rgba(0,0,0,0.1);
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--text-light);
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--secondary-color);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44,85,48,0.8), rgba(139,69,19,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect width="1200" height="600" fill="%23f0f0f0"/><path d="M0,400 C400,300 800,500 1200,400 L1200,600 L0,600 Z" fill="%23e0e0e0" opacity="0.5"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-content .arabic-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--text-dark);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: var(--accent-color);
+            color: var(--text-light);
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+            background: var(--text-light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 4rem 0;
+        }
+
+        .content-section:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .content-card {
+            background: var(--text-light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .content-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .content-card-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 3rem;
+        }
+
+        .content-card-body {
+            padding: 2rem;
+        }
+
+        .content-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .content-card p {
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Prayer Times Widget */
+        .prayer-times {
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .prayer-times h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .prayer-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .prayer-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+
+        .prayer-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .prayer-time {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: var(--text-light);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: var(--text-light);
+            text-decoration: none;
+            display: block;
+            padding: 0.2rem 0;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--secondary-color);
+            color: var(--text-dark);
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            color: var(--text-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #555;
+            color: #ccc;
+        }
+
+        /* Customization Panel */
+        .customization-panel {
+            position: fixed;
+            right: -350px;
+            top: 0;
+            height: 100vh;
+            width: 350px;
+            background: var(--text-light);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: right 0.3s;
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .customization-panel.open {
+            right: 0;
+        }
+
+        .customize-button {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            background: var(--secondary-color);
+            color: var(--text-dark);
+            border: none;
+            padding: 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1500;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .color-picker {
+            margin: 1rem 0;
+        }
+
+        .color-picker label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .color-picker input {
+            width: 100%;
+            height: 40px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .font-selector {
+            margin: 1rem 0;
+        }
+
+        .font-selector select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: var(--primary-color);
+                padding: 1rem;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .customization-panel {
+                width: 100%;
+                right: -100%;
+            }
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            --bg-light: #2a2a2a;
+            --text-dark: #ffffff;
+            --border-color: #444;
+        }
+
+        body.dark-mode .content-card,
+        body.dark-mode .feature-card {
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Customization Button -->
+    <button class="customize-button" onclick="toggleCustomization()">
+        <i class="fas fa-cog"></i>
+    </button>
+
+    <!-- Customization Panel -->
+    <div class="customization-panel" id="customizationPanel">
+        <h3>Customize Website</h3>
+        
+        <div class="color-picker">
+            <label for="primaryColor">Primary Color</label>
+            <input type="color" id="primaryColor" value="#2c5530" onchange="updatePrimaryColor(this.value)">
+        </div>
+
+        <div class="color-picker">
+            <label for="secondaryColor">Secondary Color</label>
+            <input type="color" id="secondaryColor" value="#c9a961" onchange="updateSecondaryColor(this.value)">
+        </div>
+
+        <div class="color-picker">
+            <label for="accentColor">Accent Color</label>
+            <input type="color" id="accentColor" value="#8b4513" onchange="updateAccentColor(this.value)">
+        </div>
+
+        <div class="font-selector">
+            <label for="fontFamily">Font Family</label>
+            <select id="fontFamily" onchange="updateFont(this.value)">
+                <option value="Roboto">Roboto (Default)</option>
+                <option value="Arial">Arial</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Verdana">Verdana</option>
+            </select>
+        </div>
+
+        <div style="margin: 2rem 0;">
+            <label>
+                <input type="checkbox" onchange="toggleDarkMode(this.checked)"> Dark Mode
+            </label>
+        </div>
+
+        <div style="margin: 2rem 0;">
+            <button onclick="resetStyles()" style="width: 100%; padding: 1rem; background: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                Reset to Default
+            </button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>📧 info@difaeahlesunnat.com | 📞 +1-234-567-8900</div>
+                    <div>🕐 Prayer Time: Fajr 5:30 AM</div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-mosque"></i>
+                    Difa E Ahle Sunnat
+                </a>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#articles">Articles</a></li>
+                        <li><a href="#books">Books</a></li>
+                        <li><a href="#hadith">Hadith</a></li>
+                        <li><a href="#quran">Quran</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                    <button class="mobile-toggle" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Welcome to Difa E Ahle Sunnat</h1>
+                <div class="arabic-title">دفاع اہل سنت والجماعت</div>
+                <p>Your comprehensive source for authentic Islamic knowledge, teachings, and spiritual guidance following the path of Ahle Sunnat Wal Jamaat</p>
+                <a href="#articles" class="cta-button">Explore Articles</a>
+                <a href="#books" class="cta-button">Browse Books</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Our Islamic Resources</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Quran & Tafsir</h3>
+                    <p>Complete Quranic text with authentic translations and detailed commentary from renowned scholars</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-scroll"></i>
+                    <h3>Hadith Collection</h3>
+                    <p>Comprehensive collection of authentic Hadith from Sahih Bukhari, Muslim, and other reliable sources</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Islamic Education</h3>
+                    <p>Educational content covering Fiqh, Aqeedah, Islamic history, and contemporary Islamic issues</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-pray"></i>
+                    <h3>Prayer Times</h3>
+                    <p>Accurate prayer times for your location with Qibla direction and Islamic calendar</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Community</h3>
+                    <p>Join our global community of learners and scholars dedicated to authentic Islamic knowledge</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile App</h3>
+                    <p>Access our complete library on-the-go with our user-friendly mobile application</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prayer Times -->
+    <section class="content-section">
+        <div class="container">
+            <div class="prayer-times">
+                <h3><i class="fas fa-clock"></i> Today's Prayer Times</h3>
+                <div class="prayer-list">
+                    <div class="prayer-item">
+                        <div class="prayer-name">Fajr</div>
+                        <div class="prayer-time">5:30 AM</div>
+                    </div>
+                    <div class="prayer-item">
+                        <div class="prayer-name">Dhuhr</div>
+                        <div class="prayer-time">1:15 PM</div>
+                    </div>
+                    <div class="prayer-item">
+                        <div class="prayer-name">Asr</div>
+                        <div class="prayer-time">5:45 PM</div>
+                    </div>
+                    <div class="prayer-item">
+                        <div class="prayer-name">Maghrib</div>
+                        <div class="prayer-time">7:30 PM</div>
+                    </div>
+                    <div class="prayer-item">
+                        <div class="prayer-name">Isha</div>
+                        <div class="prayer-time">9:00 PM</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="content-section" id="articles">
+        <div class="container">
+            <h2 class="section-title">Latest Articles</h2>
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="content-card-image">
+                        <i class="fas fa-book-quran"></i>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>Understanding Tawheed in Modern Times</h3>
+                        <p>A comprehensive guide to understanding the fundamental concept of Islamic monotheism and its practical applications in contemporary life.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="content-card-image">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>The Beautiful Names of Allah</h3>
+                        <p>Explore the 99 beautiful names of Allah (Asma ul Husna) and their profound meanings for spiritual development.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="content-card-image">
+                        <i class="fas fa-star-and-crescent"></i>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>Prophetic Traditions in Daily Life</h3>
+                        <p>Learn how to implement the Sunnah of Prophet Muhammad (PBUH) in our modern daily routines and practices.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="content-card-image">
+                        <i class="fas fa-mosque"></i>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>The Importance of Community in Islam</h3>
+                        <p>Understanding the role of the Muslim Ummah and building strong Islamic communities in today's world.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Books Section -->
+    <section class="content-section" id="books">
+        <div class="container">
+            <h2 class="section-title">Islamic Books & Literature</h2>
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="content-card-image">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>Sahih Al-Bukhari</h3>
+                        <p>The most authentic collection of Hadith compiled by Imam Bukhari, available with translation and commentary.</p>
+                        <a href="#" class="read-more">Download PDF →</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="content-card-image">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>Tafsir Ibn Kathir</h3>
+                        <p>Comprehensive Quranic commentary by the renowned scholar Ibn Kathir, providing deep insights into Quranic verses.</p>
+                        <a href="#" class="read-more">Download PDF →</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="content-card-image">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>Seerat-un-Nabi</h3>
+                        <p>The comprehensive biography of Prophet Muhammad (PBUH) by Allama Shibli Nomani and Sulaiman Nadvi.</p>
+                        <a href="#" class="read-more">Download PDF →</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="content-card-image">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="content-card-body">
+                        <h3>Fiqh Us-Sunnah</h3>
+                        <p>A practical guide to Islamic jurisprudence covering all aspects of Islamic law and practice.</p>
+                        <a href="#" class="read-more">Download PDF →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Difa E Ahle Sunnat is dedicated to preserving and sharing authentic Islamic knowledge based on the Quran and Sunnah, following the path of Ahle Sunnat Wal Jamaat.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#articles">Articles</a>
+                    <a href="#books">Books</a>
+                    <a href="#hadith">Hadith</a>
+                    <a href="#quran">Quran Study</a>
+                    <a href="#contact">Contact Us</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <a href="#">Prayer Times</a>
+                    <a href="#">Qibla Direction</a>
+                    <a href="#">Islamic Calendar</a>
+                    <a href="#">Duas</a>
+                    <a href="#">99 Names of Allah</a>
+                    <a href="#">Mobile App</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-envelope"></i> info@difaeahlesunnat.com</p>
+                    <p><i class="fas fa-phone"></i> +1-234-567-8900</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Islamic Center, Knowledge City</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sun: 24/7 Online</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Difa E Ahle Sunnat. All rights reserved. | Developed with ❤️ for the Muslim Ummah</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Customization panel
+        function toggleCustomization() {
+            const panel = document.getElementById('customizationPanel');
+            panel.classList.toggle('open');
+        }
+
+        // Color customization functions
+        function updatePrimaryColor(color) {
+            document.documentElement.style.setProperty('--primary-color', color);
+        }
+
+        function updateSecondaryColor(color) {
+            document.documentElement.style.setProperty('--secondary-color', color);
+        }
+
+        function updateAccentColor(color) {
+            document.documentElement.style.setProperty('--accent-color', color);
+        }
+
+        function updateFont(font) {
+            document.body.style.fontFamily = font + ', sans-serif';
+        }
+
+        function toggleDarkMode(enabled) {
+            if (enabled) {
+                document.body.classList.add('dark-mode');
+            } else {
+                
